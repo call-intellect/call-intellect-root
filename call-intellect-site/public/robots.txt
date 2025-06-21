@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://call-intellect.ru/sitemap.xml
+
+# AI-specific files
+Allow: /llms.txt
+
+# Disallow admin areas (if any)
+# Disallow: /admin/
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
