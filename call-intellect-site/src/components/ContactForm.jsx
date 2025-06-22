@@ -86,8 +86,8 @@ const ContactForm = ({ isOpen, onClose, formType = 'general' }) => {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Mail className="w-8 h-8 text-green-600" />
             </div>
-            <h3 className="text-xl font-bold text-green-600 mb-2">Заявка отправлена!</h3>
-            <p className="text-gray-600">Мы свяжемся с вами в ближайшее время</p>
+            <h3 className="text-xl font-bold text-green-600 mb-2">Спасибо!</h3>
+            <p className="text-gray-600">Ваша заявка отправлена</p>
           </div>
         ) : (
           <>
@@ -150,6 +150,29 @@ const ContactForm = ({ isOpen, onClose, formType = 'general' }) => {
                     placeholder="your@email.com"
                   />
                 </div>
+              </div>
+
+              <div className="flex items-start space-x-2 pt-2">
+                <input
+                  type="checkbox"
+                  id="agreeData"
+                  defaultChecked
+                  required
+                  className="mt-1"
+                />
+                <label htmlFor="agreeData" className="text-sm text-gray-700">
+                  Подтверждаю свои данные и даю согласие на их обработку{' '}
+                  <a href="/personal-data" className="text-blue-600 hover:underline">
+                    персональных данных
+                  </a>
+                </label>
+              </div>
+
+              <div className="flex items-start space-x-2">
+                <input type="checkbox" id="agreeMaterials" defaultChecked className="mt-1" />
+                <label htmlFor="agreeMaterials" className="text-sm text-gray-700">
+                  Даю свое согласие на получение материала о сервисе
+                </label>
               </div>
 
               <div className="flex gap-3 pt-4">

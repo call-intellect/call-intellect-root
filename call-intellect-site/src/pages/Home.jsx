@@ -1,22 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { CheckCircle, Users, TrendingUp, Clock, Target, BarChart3 } from 'lucide-react'
-import { useState } from 'react'
+import { useContactForm } from '../contexts/ContactFormContext'
 import SEOHead from '../components/SEOHead'
 import FAQSection from '../components/FAQSection'
-import ContactForm from '../components/ContactForm'
 
 const Home = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false)
-  const [formType, setFormType] = useState('general')
-
-  const openForm = (type) => {
-    setFormType(type)
-    setIsFormOpen(true)
-  }
-
-  const closeForm = () => {
-    setIsFormOpen(false)
-  }
+  const { openForm } = useContactForm()
 
   return (
     <div className="min-h-screen">
@@ -186,12 +175,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact Form Modal */}
-      <ContactForm 
-        isOpen={isFormOpen} 
-        onClose={closeForm} 
-        formType={formType} 
-      />
     </div>
   )
 }

@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { BarChart3, PieChart, TrendingUp, Database } from 'lucide-react'
 import SEOHead from '../components/SEOHead'
+import { useContactForm } from '../contexts/ContactFormContext'
 
 const MarketAnalysis = () => {
+  const { openForm } = useContactForm()
   return (
     <div className="min-h-screen">
       <SEOHead 
@@ -22,7 +24,11 @@ const MarketAnalysis = () => {
             <p className="text-xl mb-8">
               Получайте глубокие инсайты о рынке на основе анализа звонков
             </p>
-            <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100">
+            <Button
+              size="lg"
+              className="bg-white text-indigo-600 hover:bg-gray-100"
+              onClick={() => openForm('general')}
+            >
               Получить анализ рынка
             </Button>
           </div>
@@ -183,7 +189,11 @@ const MarketAnalysis = () => {
           <p className="text-xl mb-8">
             Узнайте больше о вашем рынке и получите конкурентные преимущества
           </p>
-          <Button size="lg" className="bg-white text-indigo-600 hover:bg-gray-100">
+          <Button
+            size="lg"
+            className="bg-white text-indigo-600 hover:bg-gray-100"
+            onClick={() => openForm('general')}
+          >
             Заказать анализ рынка
           </Button>
         </div>

@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { TrendingUp, Users, Target, BarChart3 } from 'lucide-react'
 import SEOHead from '../components/SEOHead'
+import { useContactForm } from '../contexts/ContactFormContext'
 
 const Sales = () => {
+  const { openForm } = useContactForm()
   return (
     <div className="min-h-screen">
       <SEOHead 
@@ -22,7 +24,11 @@ const Sales = () => {
             <p className="text-xl mb-8">
               Контроль качества звонков и обучение менеджеров для роста конверсии
             </p>
-            <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
+            <Button
+              size="lg"
+              className="bg-white text-green-600 hover:bg-gray-100"
+              onClick={() => openForm('demo')}
+            >
               Получить демо для отдела продаж
             </Button>
           </div>
@@ -109,7 +115,11 @@ const Sales = () => {
           <p className="text-xl mb-8">
             Запишитесь на демонстрацию и узнайте, как Call-Intellect поможет вашему отделу продаж
           </p>
-          <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
+          <Button
+            size="lg"
+            className="bg-white text-green-600 hover:bg-gray-100"
+            onClick={() => openForm('demo')}
+          >
             Заказать демонстрацию
           </Button>
         </div>

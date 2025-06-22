@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { Search, Filter, Users, TrendingUp } from 'lucide-react'
 import SEOHead from '../components/SEOHead'
+import { useContactForm } from '../contexts/ContactFormContext'
 
 const Marketing = () => {
+  const { openForm } = useContactForm()
   return (
     <div className="min-h-screen">
       <SEOHead 
@@ -22,7 +24,11 @@ const Marketing = () => {
             <p className="text-xl mb-8">
               Анализируйте качество лидов и потребности клиентов с помощью ИИ
             </p>
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+            <Button
+              size="lg"
+              className="bg-white text-purple-600 hover:bg-gray-100"
+              onClick={() => openForm('general')}
+            >
               Получить маркетинговую аналитику
             </Button>
           </div>
@@ -176,7 +182,11 @@ const Marketing = () => {
           <p className="text-xl mb-8">
             Узнайте больше о ваших клиентах и оптимизируйте маркетинговые кампании
           </p>
-          <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+          <Button
+            size="lg"
+            className="bg-white text-purple-600 hover:bg-gray-100"
+            onClick={() => openForm('general')}
+          >
             Заказать анализ
           </Button>
         </div>
