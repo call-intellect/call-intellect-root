@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useContactForm } from '../../contexts/ContactFormContext'
 import { Button } from '@/components/ui/button'
 import { Menu, X, Phone, MessageCircle } from 'lucide-react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
+  const { openForm } = useContactForm()
 
   const navigation = [
     { name: 'Главная', href: '/' },
@@ -55,7 +57,11 @@ const Header = () => {
             <a href="tel:+79636165035" className="text-sm hover:text-blue-200">
               +7 (963) 616-50-35
             </a>
-            <Button variant="outline" className="text-blue-600 border-white hover:bg-white">
+            <Button
+              variant="outline"
+              className="text-blue-600 border-white hover:bg-white"
+              onClick={() => openForm('general')}
+            >
               Заказать звонок
             </Button>
           </div>
@@ -89,7 +95,14 @@ const Header = () => {
                 <a href="tel:+79636165035" className="block py-2 text-sm">
                   +7 (963) 616-50-35
                 </a>
-                <Button variant="outline" className="mt-2 text-blue-600 border-white hover:bg-white">
+                <Button
+                  variant="outline"
+                  className="mt-2 text-blue-600 border-white hover:bg-white"
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    openForm('general')
+                  }}
+                >
                   Заказать звонок
                 </Button>
               </div>

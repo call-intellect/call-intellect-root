@@ -1,7 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { Calendar, User, ArrowRight } from 'lucide-react'
+import { useContactForm } from '../contexts/ContactFormContext'
 
 const Blog = () => {
+  const { openForm } = useContactForm()
   const blogPosts = [
     {
       id: 1,
@@ -88,7 +90,10 @@ const Blog = () => {
               placeholder="Ваш email"
               className="flex-1 px-4 py-2 rounded-lg text-gray-900"
             />
-            <Button className="bg-white text-blue-600 hover:bg-gray-100">
+            <Button
+              className="bg-white text-blue-600 hover:bg-gray-100"
+              onClick={() => openForm('general')}
+            >
               Подписаться
             </Button>
           </div>

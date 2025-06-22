@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { Phone, Mail, MessageCircle, MapPin, Clock } from 'lucide-react'
 import SEOHead from '../components/SEOHead'
+import { useContactForm } from '../contexts/ContactFormContext'
 
 const Contacts = () => {
+  const { openForm } = useContactForm()
   return (
     <div className="min-h-screen">
       <SEOHead 
@@ -33,69 +35,13 @@ const Contacts = () => {
             {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold mb-8">Оставьте заявку</h2>
-              <form className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Имя *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Ваше имя"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Телефон *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="+7 (___) ___-__-__"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Компания
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Название компании"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Сообщение
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Расскажите о ваших потребностях..."
-                  />
-                </div>
-                <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
-                  Отправить заявку
-                </Button>
-                <p className="text-sm text-gray-500">
-                  Нажимая кнопку, вы соглашаетесь с{' '}
-                  <a href="#" className="text-blue-600 hover:underline">
-                    политикой конфиденциальности
-                  </a>
-                </p>
-              </form>
+              <Button
+                size="lg"
+                className="w-full bg-blue-600 hover:bg-blue-700"
+                onClick={() => openForm('general')}
+              >
+                Отправить заявку
+              </Button>
             </div>
 
             {/* Contact Details */}
@@ -147,13 +93,24 @@ const Contacts = () => {
               <div className="mt-8 space-y-4">
                 <h3 className="text-xl font-bold">Быстрые действия</h3>
                 <div className="space-y-3">
-                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                  <Button
+                    className="w-full bg-green-600 hover:bg-green-700"
+                    onClick={() => openForm('demo')}
+                  >
                     Заказать демонстрацию
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => openForm('general')}
+                  >
                     Скачать презентацию
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button
+                    variant="outline"
+                    className="w-full"
+                    onClick={() => openForm('calculate')}
+                  >
                     Рассчитать стоимость
                   </Button>
                 </div>
