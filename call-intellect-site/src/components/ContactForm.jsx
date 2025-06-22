@@ -39,16 +39,22 @@ const ContactForm = ({ isOpen, onClose, formType = 'general' }) => {
 
     try {
       // Отправка данных на сервер
-      const response = await fetch('/api/contact', {
+      const baseUrl =
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1'
+          ? 'http://localhost:3001'
+          : ''
+
+      const response = await fetch(`${baseUrl}/api/contact`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           ...formData,
           formType,
           timestamp: new Date().toISOString()
-        }),
+        })
       })
 
       if (response.ok) {
